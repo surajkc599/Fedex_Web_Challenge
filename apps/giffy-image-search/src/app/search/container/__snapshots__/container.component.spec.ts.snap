@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search feature Container - Valid Text should capture the initial state of search feature 1`] = `
+<fedex-search-container
+  columns={[Function Array]}
+  datasource$={[Function Observable]}
+  loadingState$={[Function Observable]}
+  paginatorChange$={[Function BehaviorSubject]}
+  profanityService={[Function MockProfanityService]}
+  searchService={[Function MockSearchService]}
+  searchText$={[Function BehaviorSubject]}
+>
+  <div
+    class="container"
+    fxlayout="column"
+    fxlayoutgap="20px"
+  >
+    <fedex-textbox
+      fxflex="5%"
+    >
+      <section
+        class="layout-container"
+      >
+        <input
+          class="ng-untouched ng-pristine ng-valid"
+          placeholder="Search..."
+          role="textbox"
+          type="text"
+        />
+      </section>
+    </fedex-textbox>
+    
+  </div>
+</fedex-search-container>
+`;

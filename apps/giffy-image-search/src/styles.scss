@@ -1,0 +1,8 @@
+// This gets resolved during the starting phase of angular bootup.
+// Internally it refers to @fedex/foundation/src/lib path
+@import 'core';
+
+body {
+  margin: 0;
+  height: 100vh;
+}

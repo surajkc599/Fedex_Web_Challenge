@@ -1,0 +1,21 @@
+<ng-container [ngSwitch]="message?.state">
+  <!-- SHOW WHEN THE TEXT ENTERED IS PROFANITY-->
+  <fedex-loader class="loader" [loading]="true" *ngSwitchCase="'loading'"></fedex-loader>
+  <!-- SHOW WHEN THE TEXT ENTERED IS PROFANITY-->
+  <p class="fb-primary" *ngSwitchCase="'profanity'">
+    Please enter valid text. We are not obliged to diplay results for profanity
+    word...
+  </p>
+  <!--SHOW WHEN EMPTY RESULTS LOADED-->
+  <ng-container class="fb-primary" *ngSwitchCase="'empty'">
+    <p class="fb-primary">
+      Please enter valid text. Search text did not find any results.
+    </p>
+  </ng-container>
+  <!--SHOW WHEN ERROR-->
+  <ng-container class="fb-primary" *ngSwitchCase="'error'">
+    <p class="fb-primary">
+      Something went wrong. Please try again...
+    </p>
+  </ng-container>
+</ng-container>

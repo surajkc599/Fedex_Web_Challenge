@@ -1,0 +1,12 @@
+@mixin light {
+  --color-background-primary: #f2f1f1;
+  --color-background-secondary: #e4e4e4;
+  --color-text-primary: #2b3e4b;
+  --color-text-secondary: #5a6f7e;
+  --color-text-disabled: rgba(0, 0, 0, 0.2);
+  --color-object-primary: #ffffff;
+  --color-border-cold-light: rgba(0, 0, 0, 0.1);
+  --color-border-cold-medium: rgba(0, 0, 0, 0.2);
+  --color-hover-background: #e9e8e8;
+  --color-selection-primary: #0096ff;
+}

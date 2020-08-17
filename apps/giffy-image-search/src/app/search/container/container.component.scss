@@ -1,0 +1,15 @@
+@import 'spacing/variables';
+
+// Way of over-riding base variable
+$spacing-05: 40px;
+
+:host{
+  width: 100%;
+  height: 100%;
+
+  > .container {
+    width: inherit;
+    height: inherit;
+    padding: 0 $spacing-05;
+  }
+}

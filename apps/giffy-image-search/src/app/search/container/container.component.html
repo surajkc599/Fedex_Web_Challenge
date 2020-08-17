@@ -1,0 +1,60 @@
+<!--Container that wraps Header, searchbox, table and paginator-->
+<div class="container" fxLayout="column" fxLayoutGap="20px">
+  <!--Textbox where user can enter text-->
+  <fedex-textbox fxFlex="5%">
+    <input
+      #input
+      role="textbox"
+      type="text"
+      placeholder="Search..."
+      [ngModel]="searchText$ | async"
+      (ngModelChange)="searchText$.next(input.value)"
+    />
+  </fedex-textbox>
+  <!--Show Table, Pagination and Validation of messages-->
+  <ng-container *ngIf="loadingState$ | async as loading">
+    <!--Show validation of messages-->
+    <fedex-message [message]="loading"></fedex-message>
+    <!--Show table if results are available-->
+    <ng-container *ngIf="datasource$ | async as results">
+      <ng-container
+        *ngIf="results.data.length && loading.state !== 'profanity'"
+      >
+        <!--Table that displays the results-->
+        <fedex-table [datasource]="results.data" [columns]="columns" fxFlex>
+          <ng-template fedexTemplate="header">
+            <tr>
+              <th *ngFor="let column of columns" class="fh-primary">
+                {{ column }}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template fedexTemplate="body" let-gif>
+            <tr>
+              <td *ngFor="let column of columns" class="fb-primary">
+                <ng-template [ngIf]="column === 'image'" [ngIfElse]="default">
+                  <img
+                    [src]="gif?.images?.original?.url"
+                    alt="image-loaded"
+                    [style.width.px]="200"
+                    [style.height.px]="200"
+                  />
+                </ng-template>
+                <ng-template #default>
+                  {{ gif[column] }}
+                </ng-template>
+              </td>
+            </tr>
+          </ng-template>
+        </fedex-table>
+        <!--Pagination-->
+        <fedex-paginator
+          [recordsPerPage]="25"
+          [totalRecords]="results?.pagination?.total_count"
+          (pageChange)="onPageChange($event)"
+          fxFlex="10%"
+        ></fedex-paginator>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>

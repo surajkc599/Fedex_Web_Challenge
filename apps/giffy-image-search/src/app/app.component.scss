@@ -1,0 +1,23 @@
+@import 'themes/colors';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  section {
+    width: 100%;
+    height: 100%;
+  }
+
+  // Dynamically switches based on changing of class
+  :host-context(.fedex-dark) {
+    @include dark;
+  }
+  // Default color variables added to root component
+  @include light;
+
+  // Background color of app changes based on theme selected
+  background-color: var(--color-background-primary);
+}

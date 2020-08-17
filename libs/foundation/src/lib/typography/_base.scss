@@ -1,0 +1,42 @@
+@import 'fonts';
+
+// Font face base 64
+@font-face {
+  font-family: 'Fedex Roboto';
+  src: url(data:application/x-font-woff;charset=utf-8;base64,#{$asset-font-roboto-regular})
+    format('woff');
+}
+
+// Font family
+.base-text-family {
+  font-family: 'Fedex Roboto';
+  color: var(--color-text-primary);
+}
+
+// Header
+.fh-primary {
+  @extend .base-text-family;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0;
+}
+.fh-secondary {
+  @extend .base-text-family;
+  font-size: 34px;
+  line-height: 44px;
+  letter-spacing: 0;
+}
+
+// Body
+.fb-primary {
+  @extend .base-text-family;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0;
+}
+.fb-secondary {
+  @extend .base-text-family;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0;
+}
