@@ -1,0 +1,38 @@
+@import 'spacing/variables';
+
+:host {
+  display: block;
+  widows: 100%;
+
+  > .cdk-virtual-scroll-viewport {
+    height: 100%;
+
+    table {
+      width: 100%;
+      overflow-y: auto;
+      background-color: var(--color-object-primary);
+      border-collapse: collapse;
+
+      ::ng-deep tr {
+        border-bottom: $spacing-01 solid var(--color-border-cold-light);
+        height: 40px;
+        box-sizing: border-box;
+
+        th {
+          text-align: left;
+          text-transform: capitalize;
+          padding: $spacing-05;
+        }
+
+        td {
+          padding: $spacing-05;
+          // Overflow
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          max-width: 0;
+        }
+      }
+    }
+  }
+}

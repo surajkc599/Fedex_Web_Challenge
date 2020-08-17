@@ -1,0 +1,368 @@
+{
+  "version": 1,
+  "projects": {
+    "giffy-image-search": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/giffy-image-search",
+      "sourceRoot": "apps/giffy-image-search/src",
+      "prefix": "fedex",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/giffy-image-search",
+            "index": "apps/giffy-image-search/src/index.html",
+            "main": "apps/giffy-image-search/src/main.ts",
+            "polyfills": "apps/giffy-image-search/src/polyfills.ts",
+            "tsConfig": "apps/giffy-image-search/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/giffy-image-search/src/favicon.ico",
+              "apps/giffy-image-search/src/assets"
+            ],
+            "styles": ["apps/giffy-image-search/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/foundation/src/lib"]
+            },
+            "extractCss": true,
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/giffy-image-search/src/environments/environment.ts",
+                  "with": "apps/giffy-image-search/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "giffy-image-search:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "giffy-image-search:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "giffy-image-search:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/giffy-image-search/tsconfig.app.json",
+              "apps/giffy-image-search/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/giffy-image-search/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/giffy-image-search/jest.config.js",
+            "tsConfig": "apps/giffy-image-search/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/giffy-image-search/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "giffy-image-search-e2e": {
+      "root": "apps/giffy-image-search-e2e",
+      "sourceRoot": "apps/giffy-image-search-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/giffy-image-search-e2e/cypress.json",
+            "tsConfig": "apps/giffy-image-search-e2e/tsconfig.e2e.json",
+            "devServerTarget": "giffy-image-search:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "giffy-image-search:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/giffy-image-search-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/giffy-image-search-e2e/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "foundation": {
+      "projectType": "library",
+      "root": "libs/foundation",
+      "sourceRoot": "libs/foundation/src",
+      "prefix": "fedex",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/foundation/tsconfig.lib.json",
+              "libs/foundation/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/foundation/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/foundation/jest.config.js",
+            "tsConfig": "libs/foundation/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/foundation/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "table": {
+      "projectType": "library",
+      "root": "libs/table",
+      "sourceRoot": "libs/table/src",
+      "prefix": "fedex",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/table/tsconfig.lib.json",
+              "libs/table/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/table/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/table/jest.config.js",
+            "tsConfig": "libs/table/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/table/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "paginator": {
+      "projectType": "library",
+      "root": "libs/paginator",
+      "sourceRoot": "libs/paginator/src",
+      "prefix": "fedex",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/paginator/tsconfig.lib.json",
+              "libs/paginator/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/paginator/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/paginator/jest.config.js",
+            "tsConfig": "libs/paginator/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/paginator/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "data": {
+      "root": "libs/data",
+      "sourceRoot": "libs/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/data/tsconfig.lib.json",
+              "libs/data/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/data/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/data/jest.config.js",
+            "tsConfig": "libs/data/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "textbox": {
+      "projectType": "library",
+      "root": "libs/textbox",
+      "sourceRoot": "libs/textbox/src",
+      "prefix": "fedex",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/textbox/tsconfig.lib.json",
+              "libs/textbox/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/textbox/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/textbox/jest.config.js",
+            "tsConfig": "libs/textbox/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/textbox/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "loader": {
+      "projectType": "library",
+      "root": "libs/loader",
+      "sourceRoot": "libs/loader/src",
+      "prefix": "fedex",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/loader/tsconfig.lib.json",
+              "libs/loader/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/loader/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/loader/jest.config.js",
+            "tsConfig": "libs/loader/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/loader/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "giffy-image-search"
+}

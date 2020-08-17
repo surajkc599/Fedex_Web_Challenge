@@ -1,0 +1,25 @@
+<ng-container *ngIf="(datasource)?.length > 0">
+  <cdk-virtual-scroll-viewport
+    [itemSize]="itemSize"
+  >
+    <table role="table">
+      <thead>
+        <!--Table Header-->
+        <ng-container
+          *ngTemplateOutlet="header; context: { $implicit: columns }"
+        ></ng-container>
+      </thead>
+      <tbody role="rowgroup">
+        <!--Table Body-->
+        <ng-container
+        *cdkVirtualFor="let item of datasource; trackBy: rowTrackBy"
+        >
+          <ng-container
+            *ngTemplateOutlet="body; context: { $implicit: item }"
+          ></ng-container>
+        </ng-container>
+      </tbody>
+    </table>
+  </cdk-virtual-scroll-viewport>
+</ng-container>
+

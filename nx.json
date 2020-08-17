@@ -1,0 +1,51 @@
+{
+  "npmScope": "fedex",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "giffy-image-search": {
+      "tags": []
+    },
+    "giffy-image-search-e2e": {
+      "tags": [],
+      "implicitDependencies": ["giffy-image-search"]
+    },
+    "foundation": {
+      "tags": []
+    },
+    "table": {
+      "tags": []
+    },
+    "paginator": {
+      "tags": []
+    },
+    "data": {
+      "tags": []
+    },
+    "textbox": {
+      "tags": []
+    },
+    "loader": {
+      "tags": []
+    }
+  }
+}
